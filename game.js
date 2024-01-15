@@ -213,18 +213,23 @@ function increaseSpeed() {
     }
 }
 
+let gamePaused = false;
+
 function animate() {
+    if (gamePaused) {
+        console.log("Game Paused");
+        return;
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     dino.update();
     dino.draw();
 
     handleObstacles();
+    updateScore();
+    increaseSpeed();
 
-    updateScore(); // Update the score
-
-    increaseSpeed(); // Check and increase game speed
-
-    // Display the score on the canvas
     ctx.fillStyle = 'black';
     ctx.font = '20px Arial';
     ctx.fillText('Score: ' + score, 10, 20);
@@ -239,6 +244,16 @@ function animate() {
 
     frame++;
 }
+
+document.addEventListener("visibilitychange", function() {
+    console.log("Visibility Changed:", document.visibilityState);
+    gamePaused = document.visibilityState === 'hidden';
+    
+    if (!gamePaused && !gameOver) {
+        console.log("Resuming Game");
+        animate();
+    }
+});
 
 animate();
 
