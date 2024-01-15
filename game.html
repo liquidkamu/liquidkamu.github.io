@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            background-image: url('background.png'); /* Adding background image */
+            background-size: cover; /* Cover the entire body */
+            background-repeat: no-repeat; /* Prevent repetition of the background */
+        }
+        canvas {
+            border: 1px solid #000;
+            background-image: url('background_game.png');
+            background-size: cover;
+        }
+        #floorImage {
+            display: block;
+            width: 800px;
+            height: 75px;
+            margin-top: -1px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <img id="floorImage" src="floor.png" alt="Floor">
+    <script src="game.js"></script>
+</body>
+</html>
